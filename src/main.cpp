@@ -103,7 +103,7 @@ void loop() {
     retur=0;
   }
 
-//                                                Mode 1
+//                                                Mode 1 - Solid colors 
   if(modepush == 1)
   {
     if(colorpush == 1)
@@ -157,7 +157,7 @@ void loop() {
       colorpush = 1;
     }
   }
-//                                                Mode 2
+//                                                Mode 2 - Solid colors 2 by 2
   if(modepush == 2)
   {
     if(colorpush == 1)
@@ -196,7 +196,7 @@ void loop() {
 
   }
 
-  //                                          Mode 3
+  //                                          Mode 3  -  Color dimmer
 
   if(modepush == 3)
   {
@@ -309,7 +309,7 @@ void loop() {
 
   }
 
-  //                                  MODE 4
+  //                                  MODE 4 -    Random colors
 
   if(modepush == 4)
   {
