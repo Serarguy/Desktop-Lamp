@@ -46,8 +46,8 @@ void setup() {
 void loop() {
 //                                                PushButtons
   digitalWrite(RXLED, HIGH); 
-digitalWrite(TXLED, HIGH); 
-digitalWrite(LED_BUILTIN, LOW); 
+  digitalWrite(TXLED, HIGH); 
+  digitalWrite(LED_BUILTIN, LOW); 
   colorstate = digitalRead(color);
   if(colorstate != lastcolorstate)
   {
