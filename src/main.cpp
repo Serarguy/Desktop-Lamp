@@ -20,11 +20,26 @@ int colorpush = 1;
 int colorstate = 0;
 int lastcolorstate = 0;
 int i = 0;
-int j = 0;
 int waittime = 17;
 int fade = 1;
 int close = 0;
 int retur = 0;
+
+long value1;
+long value2;
+long value3;
+long value4;
+long value5;
+
+long current_value1;
+long current_value2;
+long current_value3;
+long current_value4;
+long current_value5;
+int x;
+int y;
+
+
 
 void setup() {
   pinMode(mode, INPUT);
@@ -41,6 +56,45 @@ void setup() {
   pinMode(red2, OUTPUT);
   pinMode(green2, OUTPUT);
   pinMode(blue2, OUTPUT);
+
+
+  randomSeed(analogRead(0));
+  value1 = random(255);
+  current_value1 = value1;
+  value2 = random(255);
+  current_value2 = value2;
+  value3 = random(255);
+  current_value3 = value3;
+
+  analogWrite(red, current_value1);
+  analogWrite(green, current_value2);
+  analogWrite(blue, current_value3);
+
+  value1 = random(255);
+  value2 = random(255);
+  value3 = random(255);
+
+  randomSeed(analogRead(0));
+
+  value4 = random(255);
+  current_value4 = value4;
+  value5 = random(255);
+  current_value5 = value5;
+
+  analogWrite(red2, current_value4);
+  analogWrite(blue2, current_value5);
+
+  value4 = random(255);
+  value5 = random(255);
+
+  digitalWrite(red, LOW);
+  digitalWrite(red2, LOW);
+  digitalWrite(green, LOW);
+  digitalWrite(green2, LOW);
+  digitalWrite(blue, LOW);
+  digitalWrite(blue2, LOW);
+
+
 }
 
 void loop() {
@@ -63,7 +117,6 @@ void loop() {
       Serial.print("color: ");
       Serial.println(colorpush);
       i=0;
-      j=0;
       close=0;
       retur=0;
       fade = 1;
@@ -88,15 +141,15 @@ void loop() {
       Serial.print("Mode: ");
       Serial.println(modepush);
       i=0;
-      j=0;
       close=0;
       retur=0;
+      fade = 1;
     }
     delay(50);
   }
   lastmodestate = modestate;
 
-  if(modepush == 5)
+  if(modepush == 7)
   {
     modepush = 1;
     close=0;
@@ -302,6 +355,7 @@ void loop() {
         close = 0;
       }
     }
+
     if(colorpush == 4 && modepush == 3)
     {
       colorpush = 1;
@@ -331,4 +385,126 @@ void loop() {
     digitalWrite(blue, LOW);
     digitalWrite(blue2, LOW);
   }
+
+
+  //                              MODE 6
+
+  if(modepush == 6){
+    x = random(3, 9);
+    
+    if (value1 > current_value1){
+    
+    current_value1++;
+    analogWrite(red, current_value1);
+    delay(x);
+    }
+    
+    if (value1 < current_value1){
+
+    current_value1--;
+    analogWrite(red, current_value1);
+    delay(x);
+    
+    }
+
+    if (value1 == current_value1){
+
+    analogWrite(red, current_value1);
+    value1 = random(255);
+    
+    }
+    
+    if (value2 > current_value2){
+    
+    current_value2++;
+    analogWrite(blue, current_value2);
+    delay(x);
+    }
+    
+    if (value2 < current_value2){
+
+    current_value2--;
+    analogWrite(blue, current_value2);
+    delay(x);
+    
+    }
+
+    if (value2 == current_value2){
+
+    analogWrite(blue, current_value2);
+    value2 = random(255);
+    
+    }
+
+    if (value3 > current_value3){
+    
+    current_value3++;
+    analogWrite(green, current_value3);
+    delay(x);
+    }
+    
+    if (value3 < current_value3){
+
+    current_value3--;
+    analogWrite(green, current_value3);
+    delay(x);
+    
+    }
+
+    if (value3 == current_value3){
+
+    analogWrite(green, current_value3);
+    value3 = random(255);
+    
+    }
+  
+
+    y = random(3, 9);
+    
+    if (value4 > current_value4){
+    
+    current_value4++;
+    analogWrite(red2, current_value4);
+    delay(y);
+    }
+    
+    if (value4 < current_value4){
+
+    current_value4--;
+    analogWrite(red2, current_value4);
+    delay(y);
+    
+    }
+
+    if (value4 == current_value4){
+
+    analogWrite(red2, current_value4);
+    value4 = random(255);
+    
+    }
+    
+    if (value5 > current_value5){
+    
+    current_value5++;
+    analogWrite(blue2, current_value5);
+    delay(y);
+    }
+    
+    if (value5 < current_value5){
+
+    current_value5--;
+    analogWrite(blue2, current_value5);
+    delay(y);
+    
+    }
+
+    if (value5 == current_value5){
+
+    analogWrite(blue2, current_value5);
+    value5 = random(255);
+    
+    }
+
+  }
+
 }
