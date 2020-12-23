@@ -10,8 +10,8 @@ const int red2 = 9;
 const int green2 = A1;  // not ~
 const int blue2 = 10;
 
-int RXLED = 17; // The RX LED has a defined Arduino pin
-int TXLED = 30; // The TX LED has a defined Arduino pin
+int RXLED = 17; 
+int TXLED = 30; 
 
 int modepush = 1;
 int modestate = 0;
@@ -32,8 +32,8 @@ void setup() {
   Serial.begin(9600);
   
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(RXLED, OUTPUT); // Set RX LED as an output
-  pinMode(TXLED, OUTPUT); // Set TX LED as an output
+  pinMode(RXLED, OUTPUT); 
+  pinMode(TXLED, OUTPUT); 
 
   pinMode(red, OUTPUT);
   pinMode(green, OUTPUT);
@@ -45,9 +45,9 @@ void setup() {
 
 void loop() {
 //                                                PushButtons
-  digitalWrite(RXLED, HIGH); // set the LED off
-digitalWrite(TXLED, HIGH); // set the LED off
-digitalWrite(LED_BUILTIN, LOW); // turn the LED off by
+  digitalWrite(RXLED, HIGH); 
+digitalWrite(TXLED, HIGH); 
+digitalWrite(LED_BUILTIN, LOW); 
   colorstate = digitalRead(color);
   if(colorstate != lastcolorstate)
   {
@@ -302,6 +302,10 @@ digitalWrite(LED_BUILTIN, LOW); // turn the LED off by
         close = 0;
       }
     }
+    if(colorpush == 4 && modepush == 3)
+    {
+      colorpush = 1;
+    }
 
   }
 
@@ -315,5 +319,16 @@ digitalWrite(LED_BUILTIN, LOW); // turn the LED off by
     analogWrite(red2, random(0, 255));
     analogWrite(blue2, random(0, 255));
     delay(1000);
+  }
+
+  //                               MODE 5 - OFF
+  if(modepush == 5)
+  {
+    digitalWrite(red, LOW);
+    digitalWrite(red2, LOW);
+    digitalWrite(green, LOW);
+    digitalWrite(green2, LOW);
+    digitalWrite(blue, LOW);
+    digitalWrite(blue2, LOW);
   }
 }
