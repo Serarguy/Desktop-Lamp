@@ -105,7 +105,7 @@ void loop() {
   colorstate = digitalRead(color);
   if(colorstate != lastcolorstate)
   {
-    if(colorstate == HIGH)
+    if(colorstate == HIGH && modepush < 4)
     {
       colorpush++;
       digitalWrite(red, LOW);
@@ -363,33 +363,10 @@ void loop() {
 
   }
 
-  //                                  MODE 4 -    Random colors
 
-  if(modepush == 4)
-  {
-    analogWrite(red, random(0, 255));
-    analogWrite(green, random(0, 255));
-    analogWrite(blue, random(0, 255));
-    analogWrite(red2, random(0, 255));
-    analogWrite(blue2, random(0, 255));
-    delay(1000);
-  }
+  //                              MODE 4  -  Random colors dimmer
 
-  //                               MODE 5 - OFF
-  if(modepush == 5)
-  {
-    digitalWrite(red, LOW);
-    digitalWrite(red2, LOW);
-    digitalWrite(green, LOW);
-    digitalWrite(green2, LOW);
-    digitalWrite(blue, LOW);
-    digitalWrite(blue2, LOW);
-  }
-
-
-  //                              MODE 6
-
-  if(modepush == 6){
+  if(modepush == 4){
     x = random(3, 9);
     
     if (value1 > current_value1){
@@ -506,5 +483,34 @@ void loop() {
     }
 
   }
+
+
+    //                                  MODE 5 -    Random colors
+
+  if(modepush == 5)
+  {
+    analogWrite(red, random(0, 255));
+    analogWrite(green, random(0, 255));
+    analogWrite(blue, random(0, 255));
+    analogWrite(red2, random(0, 255));
+    analogWrite(blue2, random(0, 255));
+    delay(1000);
+  }
+
+
+
+    //                               MODE 6 - OFF
+  if(modepush == 6)
+  {
+    digitalWrite(red, LOW);
+    digitalWrite(red2, LOW);
+    digitalWrite(green, LOW);
+    digitalWrite(green2, LOW);
+    digitalWrite(blue, LOW);
+    digitalWrite(blue2, LOW);
+  }
+
+
+
 
 }
